@@ -1,0 +1,69 @@
+[System]
+Name='mamdani_pendulum'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Posicion'
+Range=[-0.4 0.4]
+NumMFs=5
+MF1='MI':'trimf',[-0.669 -0.4 -0.2]
+MF2='Z':'trimf',[-0.2 0 0.2]
+MF3='MD':'trimf',[0.2 0.4 0.669]
+MF4='PD':'trimf',[-0.00173913043478269 0.198260869565217 0.398260869565217]
+MF5='PI':'trimf',[-0.4 -0.2 0]
+
+[Input2]
+Name='Velocidad'
+Range=[-0.5 0.5]
+NumMFs=5
+MF1='MA':'trimf',[-0.966 -0.5 -0.25]
+MF2='Z':'trimf',[-0.247354497354497 0.00264550264550256 0.252645502645503]
+MF3='MH':'trimf',[0.25 0.5 0.966]
+MF4='PH':'trimf',[0 0.25 0.5]
+MF5='PA':'trimf',[-0.5 -0.25 0]
+
+[Output1]
+Name='Fuerza'
+Range=[-10 10]
+NumMFs=5
+MF1='MD':'trimf',[-15 -10 -5]
+MF2='PD':'trimf',[-10 -5 0]
+MF3='Z':'trimf',[-5 -5.551e-17 5]
+MF4='PI':'trimf',[0 5 10]
+MF5='MI':'trimf',[5 10 15]
+
+[Rules]
+1 1, 5 (1) : 1
+1 5, 5 (1) : 1
+1 2, 5 (1) : 1
+1 4, 4 (1) : 1
+1 3, 3 (1) : 1
+5 1, 5 (1) : 1
+5 5, 5 (1) : 1
+5 2, 4 (1) : 1
+5 4, 3 (1) : 1
+5 3, 2 (1) : 1
+2 1, 5 (1) : 1
+2 5, 4 (1) : 1
+2 2, 3 (1) : 1
+2 4, 2 (1) : 1
+2 3, 1 (1) : 1
+4 1, 4 (1) : 1
+4 5, 3 (1) : 1
+4 2, 2 (1) : 1
+4 4, 1 (1) : 1
+4 3, 1 (1) : 1
+3 1, 3 (1) : 1
+3 5, 2 (1) : 1
+3 2, 1 (1) : 1
+3 4, 1 (1) : 1
+3 3, 1 (1) : 1
